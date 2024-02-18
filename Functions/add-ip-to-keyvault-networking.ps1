@@ -4,9 +4,6 @@ function Add-IpToNetworkingKeyVault {
         [string]$keyVaultName,
 
         [Parameter(Mandatory = $true)]
-        [string]$resourceGroupName,
-
-        [Parameter(Mandatory = $true)]
         [string]$ipAddress
     )
 
@@ -14,6 +11,6 @@ function Add-IpToNetworkingKeyVault {
     Import-Module Az.KeyVault
 
     # Add your IP address to the Key Vault firewall rules
-    Set-AzKeyVaultNetworkRuleSet -VaultName $keyVaultName -ResourceGroupName $resourceGroupName -Bypass AzureServices -DefaultAction Deny -IpAddressRange $ipAddress
+    Add-AzKeyVaultNetworkRule -VaultName $keyVaultName -IpAddressRange $ipAddress
 
 }

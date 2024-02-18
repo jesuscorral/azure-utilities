@@ -32,8 +32,9 @@ foreach ($keyVaultName in $keyVaults) {
     Write-Host "Adding access policy to key vault $keyVaultName..."
     Add-AccessPolicyToKeyVault -keyVaultName $keyVaultName -userObjectId $userObjectId
     Write-Host "Adding IP to networking key vault $keyVaultName..."
-    Add-IpToNetworkingKeyVault -keyVaultName $keyVaultName -resourceGroupName $resourceGroupName -ipAddress $ipAddress
+    Add-IpToNetworkingKeyVault -keyVaultName $keyVaultName -ipAddress $ipAddress
 }
+
 
 # Disconnect from Azure
 Disconnect-AzAccount
